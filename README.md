@@ -1,2 +1,2 @@
-# my_test_project
-it's a test!!!!!!!!!
+Original Files = קודי המקור
+My Files = השכתוב שלי מחדש
