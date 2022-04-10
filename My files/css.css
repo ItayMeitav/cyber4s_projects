@@ -18,36 +18,47 @@ align-items: center;
     align-items: center;
 }
 .mw-logo-container {
-float: right;
-max-width: 120px;
+    font-size: 100%;
+    font-family: sans-serif;
+    color: #0645ad;
+    float: right;
+    max-width: none;
 }
 .mw-logo-icon {
+    font-size: 100%;
+    font-family: sans-serif;
+    color: #0645ad;
+    aspect-ratio: auto 50 / 50;
+    border: 0;
+    overflow:middle;
     float: right;
     margin-left: 10px;
-    display: none;
     width: 3.125em;
     height: 3.125em;
+    display: block;
 }
 .mw-logo-wordmark {
-font-size: 100%;
-font-family: sans-serif;
-color: #0645ad;
-border: 0;
-display: block;
-margin: 0 auto;
-width: 6.3125em;
-height: 1.625em;
+    font-size: 100%;
+    font-family: sans-serif;
+    color: #0645ad;
+    border: 0;
+    overflow: middle;
+    display: block;
+    margin: 0 auto;
+    width: 6.3125em;
+    height: 1.625em;
 }
 .mw-logo-tagline {
-font-size: 100%;
-font-family: sans-serif;
-color: #0645ad;
-aspect-ratio: auto 111 / 11;
-border: 0;
-display: block;
-margin: 5px auto 0;
-width: 6.9375em;
-height: 0.6875em;
+    font-size: 100%;
+    font-family: sans-serif;
+    color: #0645ad;
+    aspect-ratio: auto 111 / 11;
+    border: 0;
+    overflow: middle;
+    display: block;
+    margin: 5px auto 0;
+    width: 6.9375em;
+    height: 0.6875em;
 }
 a {
 text-decoration: none;
