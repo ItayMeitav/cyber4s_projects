@@ -1,64 +1,53 @@
-.mw-header {
-font-size: 100%;
-font-family: sans-serif;
-color: #202122;
-position: relative;
-z-index: 4;
-min-height: 3.125em;
-margin: 0.625em 0 0.3125em 0;
-padding: 0.125em 0;
-display: flex;
-flex-wrap: nowrap;
-align-items: center;
+@media all {
+    .mw-logo {
+        display: -ms-flexbox;
+        display: flex;
+        height: 100%;
+        align-items: center
+    }
+
+    .mw-logo-icon {
+        float: right;
+        margin-left: 10px;
+        display: none;
+        width: 3.125em;
+        height: 3.125em
+    }
+
+    .mw-logo-container {
+        float: right;
+        max-width: 120px
+    }
+
+    .mw-logo-container img {
+        width: 100%
+    }
+
+    .mw-logo-wordmark {
+        display: block;
+        margin: 0 auto
+    }
+
+    .mw-logo-tagline {
+        display: block;
+        margin: 5px auto 0
+    }
 }
-.mw-logo {
-    display: -ms-flexbox;
-    display: flex;
-    height: 100%;
-    align-items: center;
+
+@media all and (min-width: 720px) {
+    .mw-logo-icon {
+        display:block
+    }
 }
-.mw-logo-container {
-    font-size: 100%;
-    font-family: sans-serif;
-    color: #0645ad;
-    float: right;
-    max-width: none;
-}
-.mw-logo-icon {
-    font-size: 100%;
-    font-family: sans-serif;
-    color: #0645ad;
-    aspect-ratio: auto 50 / 50;
-    border: 0;
-    overflow:middle;
-    float: right;
-    margin-left: 10px;
-    width: 3.125em;
-    height: 3.125em;
-    display: block;
-}
-.mw-logo-wordmark {
-    font-size: 100%;
-    font-family: sans-serif;
-    color: #0645ad;
-    border: 0;
-    overflow: middle;
-    display: block;
-    margin: 0 auto;
-    width: 6.3125em;
-    height: 1.625em;
-}
-.mw-logo-tagline {
-    font-size: 100%;
-    font-family: sans-serif;
-    color: #0645ad;
-    aspect-ratio: auto 111 / 11;
-    border: 0;
-    overflow: middle;
-    display: block;
-    margin: 5px auto 0;
-    width: 6.9375em;
-    height: 0.6875em;
+
+@media all and (min-width: 720px) {
+    .mw-logo-container {
+        max-width:none
+    }
+
+    .mw-logo-container img {
+        width: auto
+    }
 }
 a {
 text-decoration: none;
