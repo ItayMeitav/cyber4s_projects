@@ -60,3 +60,6 @@ td:hover {
 .selected {
   background-color: lightgreen;
 }
+.optional-move {
+  background-color: lightgreen;
+}
