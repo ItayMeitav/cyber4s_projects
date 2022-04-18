@@ -1,7 +1,6 @@
 const BOARD_SIZE = 8;
 const WHITE_TYPE = 'white_rotated';
 const DARK_TYPE = 'dark';
-let selectedCell;
 
 function addImage(cell, type, name) {
   const image = document.createElement('img');
@@ -23,38 +22,19 @@ function addImageByIndex(cell, type, index) {
   }
 }
 
-function onCellClick (event){
-    if(selectedCell !== undefined) {
-        selectedCell.classList.remove('selected');
-    }
-    selectedCell = event.currentTarget;
-    selectedCell.classList.add('selected');
-    }
-     
-
 function createChessBoard() {
-    const cols = {1:"A", 2:"B", 3:"C", 4:"D", 5:"E", 6:"F", 7:"G", 8:"H"}
   const table1 = document.createElement('table');
-  table1.className = "board";
   document.body.appendChild(table1);
   for (let i = 0; i < BOARD_SIZE; i++) {
-    // let row = table1.insertRow();
-    let row = document.createElement('tr');
-    table1.appendChild(row);
-    row.dataset.line = i+1;
+    const row = table1.insertRow();
     for (let j = 0; j < BOARD_SIZE; j++) {
-    //   let cell = row.insertCell();
-    let cell = document.createElement('td');
-      cell.dataset.col = cols[j+1];
-      cell.dataset.line = i;
-      row.appendChild(cell);
+      const cell = row.insertCell();
       cell.id = "cell-" + i.toString() + "_" + j.toString();
       if ((i + j) % 2 === 0) {
         cell.className = 'light-cell';
       } else {
         cell.className = 'dark-cell';
       }
-      cell.addEventListener('click', onCellClick);
 
       if (i === 0) {
         addImageByIndex(cell, WHITE_TYPE, j);
@@ -66,7 +46,7 @@ function createChessBoard() {
         addImageByIndex(cell, DARK_TYPE, j);
       }
     }
-  } 
+  }
 }
-window.addEventListener('load', createChessBoard);
 
+window.addEventListener('load', createChessBoard);

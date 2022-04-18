@@ -1,0 +1,53 @@
+
+  body {
+      display: grid;
+      justify-content: center;
+  }
+  .board {
+    width: 610px;
+    height: 610px;
+    border: 32px solid;
+    border-color: darkslategray;
+    border-radius: 0.2rem;
+  }
+  .square {
+    border: 1px black solid;
+  }
+  .white{
+    background: white;
+  }
+  .black{
+    background: grey
+  }
+  .board tr::before {
+    content: attr(data-line);
+    position: absolute;
+    margin: 1.8rem 0 0rem -1.5rem;
+    font-size: larger;
+    color: azure;
+  }
+  .board tr::after {
+    content: attr(data-line);
+    position: absolute;
+    margin: 1.8rem 0 0rem 0.8rem;
+    font-size: larger;
+    color: azure;
+  }
+  .board tr:first-child > td::before {
+    content: attr(data-col);
+    position: absolute;
+    margin: -4rem 0 0rem 1.6rem;
+    font-size: larger;
+    color: azure;
+  }
+  .board tr:last-child > td::after {
+    content: attr(data-col);
+    position: absolute;
+    margin: 2.6rem 0 0rem 1.6rem;
+    font-size: larger;
+    color: azure;
+  }
+  td:hover {
+    background: lightgreen;
+    cursor: pointer
+  }

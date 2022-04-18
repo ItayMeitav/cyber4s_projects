@@ -1,0 +1,62 @@
+body {
+  display: grid;
+  justify-content: center;
+}
+
+.light-cell {
+  width: 45px;
+  height: 45px;
+  background: white;
+  border: 1px black solid;
+}
+
+.dark-cell {
+  width: 45px;
+  height: 45px;
+  background: gray;
+  border: 1px black solid;
+}
+
+.board {
+  width: 330px;
+  height: 330px;
+  border: 32px solid;
+  border-color: darkslategray;
+  border-radius: 0.2rem;
+}
+
+.board tr::before {
+  content: attr(data-line);
+  position: absolute;
+  margin: 1.2rem 0 0rem -1.5rem;
+  font-size: larger;
+  color: azure;
+}
+.board tr::after {
+  content: attr(data-line);
+  position: absolute;
+  margin: 1.2rem 0 0rem 0.8rem;
+  font-size: larger;
+  color: azure;
+}
+.board tr:first-child > td::before {
+  content: attr(data-col);
+  position: absolute;
+  margin: -1.9rem 0 0rem 1rem;
+  font-size: larger;
+  color: azure;
+}
+.board tr:last-child > td::after {
+  content: attr(data-col);
+  position: absolute;
+  margin: 3.6rem 0 0rem -1.8rem;
+  font-size: larger;
+  color: azure;
+}
+td:hover {
+  background: lightgreen;
+  cursor: pointer
+}
+.selected {
+  background-color: lightgreen;
+}
