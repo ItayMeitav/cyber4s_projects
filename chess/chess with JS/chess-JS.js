@@ -4,7 +4,7 @@ const DARK_PLAYER = 'dark';
 let selectedCell;
 let pieces = [];
 
-class Piece {
+class Piece {                                                //creating classes to pieces
     constructor (row, col, type, player) {
         this.row = row;
         this.col = col;
@@ -14,63 +14,46 @@ class Piece {
 }
 
 function getInitialBoard() {
-let result = [];
-result.push(new Piece(0, 0, "rook", WHITE_PLAYER)) 
-result.push(new Piece (0, 1, "knight", WHITE_PLAYER))
-result.push(new Piece (0, 2, "bishop", WHITE_PLAYER))
+let result = [];                                            //creating start-positions by loops
+for (let i = 0; i < 8; i++) {
+    if (i==0 || i==7) {
+        result.push(new Piece(0, i, "rook", WHITE_PLAYER));
+    } else if (i==1 || i==6) {
+    result.push(new Piece(0, i, "knight", WHITE_PLAYER));
+    } else if (i==2 || i==5) {
+    result.push(new Piece(0, i, "bishop", WHITE_PLAYER));
+}
+}
 result.push(new Piece (0, 3, "queen", WHITE_PLAYER))
 result.push(new Piece (0, 4, "king", WHITE_PLAYER))
-result.push(new Piece (0, 5, "bishop", WHITE_PLAYER))
-result.push(new Piece (0, 6, "knight", WHITE_PLAYER))
-result.push(new Piece (0, 7, "rook", WHITE_PLAYER))
-result.push(new Piece (1, 0, "pawn", WHITE_PLAYER))
-result.push(new Piece (1, 1, "pawn", WHITE_PLAYER))
-result.push(new Piece (1, 2, "pawn", WHITE_PLAYER))
-result.push(new Piece (1, 3, "pawn", WHITE_PLAYER))
-result.push(new Piece (1, 4, "pawn", WHITE_PLAYER))
-result.push(new Piece (1, 5, "pawn", WHITE_PLAYER))
-result.push(new Piece (1, 6, "pawn", WHITE_PLAYER))
-result.push(new Piece (1, 7, "pawn", WHITE_PLAYER))
-result.push(new Piece (6, 0, "pawn", DARK_PLAYER))
-result.push(new Piece (6, 1, "pawn", DARK_PLAYER))
-result.push(new Piece (6, 2, "pawn", DARK_PLAYER))
-result.push(new Piece (6, 3, "pawn", DARK_PLAYER))
-result.push(new Piece (6, 4, "pawn", DARK_PLAYER))
-result.push(new Piece (6, 5, "pawn", DARK_PLAYER))
-result.push(new Piece (6, 6, "pawn", DARK_PLAYER))
-result.push(new Piece (6, 7, "pawn", DARK_PLAYER))
-result.push(new Piece (7, 0, "rook", DARK_PLAYER))
-result.push(new Piece (7, 1, "knight", DARK_PLAYER))
-result.push(new Piece (7, 2, "bishop", DARK_PLAYER))
+
+for (let i = 0; i < 8; i++) {
+   result.push(new Piece (1, i, "pawn", WHITE_PLAYER));
+}
+for (let j=0; j < 8; j++) {
+    result.push(new Piece (6, j, "pawn", DARK_PLAYER));
+}
+for (let i = 0; i < 8; i++) {
+    if (i==0 || i==7) {
+        result.push(new Piece(7, i, "rook", DARK_PLAYER));
+    } else if (i==1 || i==6) {
+        result.push(new Piece(7, i, "knight", DARK_PLAYER));
+    } else if (i==2 || i==5) {
+    result.push(new Piece(7, i, "bishop", DARK_PLAYER));
+}
+}
 result.push(new Piece (7, 3, "queen", DARK_PLAYER))
 result.push(new Piece (7, 4, "king", DARK_PLAYER))
-result.push(new Piece (7, 5, "bishop", DARK_PLAYER))
-result.push(new Piece (7, 6, "knight", DARK_PLAYER))
-result.push(new Piece (7, 7, "rook", DARK_PLAYER))
 return result;
 }
 
-function addImage(cell, player, name) {
+function addImage(cell, player, name) {                    //matching icons to classes
   const image = document.createElement('img');
   image.src = 'images/' + player + '/' + name + '.png';
   cell.appendChild(image);
 }
 
-function addImageByIndex(cell, player, index) {
-  if (index === 0 || index === 7) {
-    addImage(cell, player, 'rook');
-  } else if (index === 1 || index === 6) {
-    addImage(cell, player, 'knight');
-  } else if (index === 2 || index === 5) {
-    addImage(cell, player, 'bishop');
-  } else if (index === 3) {
-    addImage(cell, player, 'king');
-  } else if (index === 4) {
-    addImage(cell, player, 'queen');
-  }
-}
-
-function onCellClick (event){
+function onCellClick (event){                             //click on a cell
     if(selectedCell !== undefined) {
         selectedCell.classList.remove('selected');
     }
@@ -79,7 +62,7 @@ function onCellClick (event){
     }
      
 
-function createChessBoard() {
+function createChessBoard() {                             //creating board function
     const cols = {1:"A", 2:"B", 3:"C", 4:"D", 5:"E", 6:"F", 7:"G", 8:"H"}
   const table1 = document.createElement('table');
   table1.className = "board";
@@ -107,7 +90,7 @@ function createChessBoard() {
   pieces = getInitialBoard();
 
   for(let piece of pieces) {
-      addImage(table1.rows[piece.row].cells[piece.col], piece.player, piece.type);
+      addImage(table1.rows[piece.row].cells[piece.col], piece.player, piece.type)
   }
 }
 window.addEventListener('load', createChessBoard);
