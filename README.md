@@ -1,1 +1,1 @@
-♟》》》   May The Odds Be Ever in Your Favor  《《《♟
+》》》   ♟ May The Odds Be Ever in Your Favor ♟  《《《
