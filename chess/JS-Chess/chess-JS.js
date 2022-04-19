@@ -3,6 +3,7 @@ const WHITE_PLAYER = 'white';
 const DARK_PLAYER = 'dark';
 let selectedCell;
 let pieces = [];
+// let table;
 
 class Piece {                                                //creating classes to pieces
     constructor (row, col, type, player) {
@@ -47,7 +48,7 @@ result.push(new Piece (7, 4, "king", DARK_PLAYER))
 return result;
 }
 
-function addImage(cell, player, name) {                    //matching icons to classes
+function addImage(cell, player, name) {                    //matching icons to classes function
   const image = document.createElement('img');
   image.src = 'images/' + player + '/' + name + '.png';
   cell.appendChild(image);
