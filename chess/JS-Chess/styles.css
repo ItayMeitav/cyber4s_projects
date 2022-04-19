@@ -40,14 +40,14 @@ body {
   color: azure;
 }
 .board tr:first-child > td::before {
-  content: attr(data-col);
+  content: attr(data-column);
   position: absolute;
   margin: -1.9rem 0 0rem 1rem;
   font-size: larger;
   color: azure;
 }
 .board tr:last-child > td::after {
-  content: attr(data-col);
+  content: attr(data-column);
   position: absolute;
   margin: 3.6rem 0 0rem -1.8rem;
   font-size: larger;
@@ -60,6 +60,6 @@ td:hover {
 .selected {
   background-color: lightgreen;
 }
-.optional-move {
+.possible-move {
   background-color: lightgreen;
 }
