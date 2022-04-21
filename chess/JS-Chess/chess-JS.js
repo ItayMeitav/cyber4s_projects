@@ -63,7 +63,7 @@ class Piece {
         filteredMoves.push(absoluteMove);
       }
     }
-    console.log('filteredMoves', filteredMoves);
+    // console.log('filteredMoves', filteredMoves);
     return filteredMoves;
   }
 
@@ -72,56 +72,51 @@ class Piece {
     if (this.player === BLACK_PLAYER) {
       return [[-direction, 0]];
     }
-    return [[1, 0]];
+    return [[+1, 0]];
   }
 
   getRookRelativeMoves() {
     let result = [];
     for (let i = 1; i < BOARD_SIZE; i++) {
-      result.push([i, 0]);
+      result.push([+i, 0]);
       result.push([-i, 0]);
-      result.push([0, i]);
+      result.push([0, +i]);
       result.push([0, -i]);
     }
     return result;
   }
 
   getKnightRelativeMoves() {
-    let result = [];
-    result.push([2, 1]);
-    result.push([2, 1]);
-    result.push([1, 2]);
-    result.push([1, -2]);
-    result.push([-1, -2]);
-    result.push([-1, +2]);
-    result.push([+2, -1]);
-    result.push([-2, +1]);
-    result.push([-2, -1]);
-    result.push([+2, +1]);
-    return result;
+    const numbers = { ones: [-1, +1], twos: [-2, +2] };
+    const combined = numbers.twos.flatMap(o => numbers.ones.map(t => [o, t]));
+    const reversedcombined = numbers.ones.flatMap(o => numbers.twos.map(t => [o, t]));
+    return [...combined, ...reversedcombined];
   }
 
 
   getBishopRelativeMoves() {
-    let result = [];
-    for (let i = 1; i < BOARD_SIZE; i++) {
-      result.push([i, i]);
-      result.push([-i, -i]);
-      result.push([+i, -i]);
-      result.push([-i, +i]);
-    }
-    return result;
-  }
+    const boardSizeArray = [...Array(BOARD_SIZE).keys()].slice(1);
+    const movesArray = boardSizeArray.map(i => {
+      return [
+        [+i, +i],
+        [-i, -i],
+        [+i, -i],
+        [-i, +i]
+      ]
+    }).flat();
+    return movesArray;
+  }; 
+  
 
   getKingRelativeMoves() {
     let result = [];
-    result.push([1, 0]);
-    result.push([-1, 0]);
-    result.push([0, 1]);
+    result.push([0, +1]);
     result.push([0, -1]);
-    result.push([-1, -1]);
     result.push([-1, +1]);
+    result.push([-1, 0]);
+    result.push([-1, -1]);
     result.push([+1, -1]);
+    result.push([+1, 0]);
     result.push([+1, +1]);
     return result;
   }
@@ -129,13 +124,13 @@ class Piece {
   getQueenRelativeMoves() {
     let result = [];
     for (let i = 1; i < BOARD_SIZE; i++) {
-      result.push([i, 0]);
-      result.push([-i, 0]);
-      result.push([0, i]);
+      result.push([0, +i]);
       result.push([0, -i]);
-      result.push([i, i]);
-      result.push([-i, -i]);
+      result.push([+i, 0]);
+      result.push([+i, +i]);
       result.push([+i, -i]);
+      result.push([-i, 0]);
+      result.push([-i, -i]);
       result.push([-i, +i]);
     }
     return result;
