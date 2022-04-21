@@ -76,14 +76,11 @@ class Piece {
   }
 
   getRookRelativeMoves() {
-    let result = [];
-    for (let i = 1; i < BOARD_SIZE; i++) {
-      result.push([+i, 0]);
-      result.push([-i, 0]);
-      result.push([0, +i]);
-      result.push([0, -i]);
-    }
-    return result;
+    const boardSizeArray = [...Array(BOARD_SIZE).keys()].slice(1);
+    const movesArray = boardSizeArray.map(i => {
+      return [[+i, 0], [-i, 0], [0, +i], [0, -i]]
+    }).flat();
+    return movesArray;
   }
 
   getKnightRelativeMoves() {
@@ -97,43 +94,24 @@ class Piece {
   getBishopRelativeMoves() {
     const boardSizeArray = [...Array(BOARD_SIZE).keys()].slice(1);
     const movesArray = boardSizeArray.map(i => {
-      return [
-        [+i, +i],
-        [-i, -i],
-        [+i, -i],
-        [-i, +i]
-      ]
+      return [[+i, +i], [-i, -i], [+i, -i], [-i, +i]]
     }).flat();
     return movesArray;
   }; 
   
 
   getKingRelativeMoves() {
-    let result = [];
-    result.push([0, +1]);
-    result.push([0, -1]);
-    result.push([-1, +1]);
-    result.push([-1, 0]);
-    result.push([-1, -1]);
-    result.push([+1, -1]);
-    result.push([+1, 0]);
-    result.push([+1, +1]);
-    return result;
+    const numbers = [-1, 0, +1];
+    const combined = numbers.flatMap(o => numbers.map(t => {
+      if (o !== 0 || t !== 0) {
+        return [o, t];
+      }
+    }));
+    return combined.filter(Boolean);
   }
 
   getQueenRelativeMoves() {
-    let result = [];
-    for (let i = 1; i < BOARD_SIZE; i++) {
-      result.push([0, +i]);
-      result.push([0, -i]);
-      result.push([+i, 0]);
-      result.push([+i, +i]);
-      result.push([+i, -i]);
-      result.push([-i, 0]);
-      result.push([-i, -i]);
-      result.push([-i, +i]);
-    }
-    return result;
+    return [...this.getRookRelativeMoves(), ...this.getBishopRelativeMoves()];
   }
 }
 
