@@ -23,7 +23,6 @@ class Piece {
     this.player = player
   }
 
-
   getPossibleMoves() {
     let relativeMoves;
     if (this.type === PAWN) {
@@ -71,15 +70,17 @@ class Piece {
     let direction = 1;
     if (this.player === BLACK_PLAYER) {
       return [[-direction, 0]];
-    }
-    return [[+1, 0]];
+    } 
+    return [[direction, 0]];
   }
+ 
+
 
   getRookRelativeMoves() {
     const boardSizeArray = [...Array(BOARD_SIZE).keys()].slice(1);
-    const movesArray = boardSizeArray.map(i => {
+    const movesArray = boardSizeArray.flatMap(i => {
       return [[+i, 0], [-i, 0], [0, +i], [0, -i]]
-    }).flat();
+    });
     return movesArray;
   }
 
@@ -102,12 +103,8 @@ class Piece {
 
   getKingRelativeMoves() {
     const numbers = [-1, 0, +1];
-    const combined = numbers.flatMap(o => numbers.map(t => {
-      if (o !== 0 || t !== 0) {
-        return [o, t];
-      }
-    }));
-    return combined.filter(Boolean);
+    const combined = numbers.flatMap(o => numbers.flatMap(t => (o !== 0 || t !== 0) ? [[o, t]] : []))
+    return combined;
   }
 
   getQueenRelativeMoves() {
@@ -145,14 +142,10 @@ function getInitialPieces() {
 }
 
 function addFirstRowPieces(result, row, player) {
-  result.push(new Piece(row, 0, ROOK, player));
-  result.push(new Piece(row, 1, KNIGHT, player));
-  result.push(new Piece(row, 2, BISHOP, player));
-  result.push(new Piece(row, 3, KING, player));
-  result.push(new Piece(row, 4, QUEEN, player));
-  result.push(new Piece(row, 5, BISHOP, player));
-  result.push(new Piece(row, 6, KNIGHT, player));
-  result.push(new Piece(row, 7, ROOK, player));
+  const positioningPieces = [ROOK, KNIGHT, BISHOP, KING, QUEEN, BISHOP, KNIGHT, ROOK];
+  positioningPieces.forEach((piece, index) => {
+    result.push(new Piece(row, index, piece, player));
+  });
 }
 
 //matching icons to classes function
