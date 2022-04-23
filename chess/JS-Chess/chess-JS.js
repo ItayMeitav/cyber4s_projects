@@ -40,7 +40,6 @@ class Piece {
     } else {
       console.log("Unknown type", type)
     }
-    // console.log('relativeMoves', relativeMoves);
 
 
     // Get absolute moves
@@ -50,7 +49,6 @@ class Piece {
       const absoluteCol = this.col + relativeMove[1];
       absoluteMoves.push([absoluteRow, absoluteCol]);
     }
-    // console.log('absoluteMoves', absoluteMoves);
 
 
     // Get filtered absolute moves
@@ -62,7 +60,6 @@ class Piece {
         filteredMoves.push(absoluteMove);
       }
     }
-    // console.log('filteredMoves', filteredMoves);
     return filteredMoves;
   }
 
@@ -156,10 +153,8 @@ function addImage(cell, player, name) {
   cell.appendChild(image);
 }
 
+ // Clear all previous possible moves
 function onCellClick(event, row, col) {
-  // console.log(row);
-  // console.log(col);
-  // Clear all previous possible moves
   for (let i = 0; i < BOARD_SIZE; i++) {
     for (let j = 0; j < BOARD_SIZE; j++) {
       table.rows[i].cells[j].classList.remove('possible-move');
@@ -186,9 +181,8 @@ function onCellClick(event, row, col) {
   selectedCell.classList.add('selected');
 }
 
-
-function createChessBoard() {
-  // Create empty chess board HTML:                         
+ // Create empty chess board HTML: 
+function createChessBoard() {                        
   const cols = { 1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "F", 7: "G", 8: "H" }
   table = document.createElement('table');
   table.className = "board";
