@@ -4,15 +4,15 @@ body {
 }
 
 .light-cell {
-  width: 50px;
-  height: 50px;
+  width: 49px;
+  height: 49px;
   background: white;
   border: 1px black solid;
 }
 
 .dark-cell {
-  width: 50px;
-  height: 50px;
+  width: 49px;
+  height: 49px;
   background: gray;
   border: 1px black solid;
 }
@@ -25,7 +25,7 @@ body {
   border-radius: 0.2rem;
 }
 
-.board tr::before {
+/* .board tr::before {
   content: attr(data-line);
   position: absolute;
   margin: 1.2rem 0 0rem -1.5rem;
@@ -52,7 +52,8 @@ body {
   margin: 3.6rem 0 0rem -1.8rem;
   font-size: larger;
   color: azure;
-}
+} */
+
 td:hover {
   background: lightgreen;
   cursor: pointer
