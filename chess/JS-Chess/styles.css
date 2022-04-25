@@ -41,18 +41,19 @@ body {
 }
 .board tr:first-child > td::before {
   content: attr(data-column);
-  position: absolute;
+  position: fixed;
   margin: -1.9rem 0 0rem 1rem;
   font-size: larger;
   color: azure;
 }
 .board tr:last-child > td::after {
   content: attr(data-column);
-  position: absolute;
+  position: fixed;
   margin: 3.6rem 0 0rem -1.8rem;
   font-size: larger;
   color: azure;
 } */
+
 
 td:hover {
   background: lightgreen;
