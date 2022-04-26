@@ -31,7 +31,7 @@ function tryUpdateSelectedPiece(row, col) {
   // Show possible moves
   const piece = game.boardData.getPiece(row, col);
   if (piece !== undefined) {
-    let possibleMoves = game.getPossibleMoves(piece);
+    let possibleMoves = game.getCurrentPlayerTurn(piece);
     for (let possibleMove of possibleMoves) {
       const cell = table.rows[possibleMove[0]].cells[possibleMove[1]];
       cell.classList.add('possible-move');

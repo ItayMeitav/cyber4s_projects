@@ -6,17 +6,18 @@ class BoardData {
     // Create list of pieces (32 total)
     initPieces() {
         this.pieces = [];
-    
-        for (let i = 0; i < BOARD_SIZE; i++) {
-          this.pieces.push(new Piece(0, i, PIECES[i], WHITE_PLAYER));
-          this.pieces.push(new Piece(1, i, PAWN, WHITE_PLAYER));
-          this.pieces.push(new Piece(6, i, PAWN, BLACK_PLAYER));
-          this.pieces.push(new Piece(7, i, PIECES[i], BLACK_PLAYER));
-        }
-      } 
 
-      
+        for (let i = 0; i < BOARD_SIZE; i++) {
+            this.pieces.push(new Piece(0, i, PIECES[i], WHITE_PLAYER));
+            this.pieces.push(new Piece(1, i, PAWN, WHITE_PLAYER));
+            this.pieces.push(new Piece(6, i, PAWN, BLACK_PLAYER));
+            this.pieces.push(new Piece(7, i, PIECES[i], BLACK_PLAYER));
+        }
+    }
+
+
     //     function addFirstRowPieces(result, row, player) {
+    //         result = [];
     //         const positioningPieces = [ROOK, KNIGHT, BISHOP, KING, QUEEN, BISHOP, KNIGHT, ROOK];
     //         positioningPieces.forEach((piece, index) => {
     //         result.push(new Piece(row, index, piece, player));
@@ -35,6 +36,8 @@ class BoardData {
 
 
     // Returns piece in row, col, or undefined if not exists.
+    
+    
     getPiece(row, col) {
         for (const piece of this.pieces) {
             if (piece.row === row && piece.col === col) {
@@ -42,6 +45,13 @@ class BoardData {
             }
         }
     }
+
+
+    //מהתחלה'-מהחישוב של המהלכים האפשרים הפונקציה לא תכנס לחיילים של הצבע הנוכחי'
+  //הלולאה רצה על כל הכלים ומהתחלה שוללת את הכלים שלי
+  //ברגע שהתוכנית רואה שיש כלי מסוים במיקום הזה
+  //אז יכנס לתוך התנאי ורק אז ימחק אותו מהמערך
+  //אחרת ימשיך
 
     removePiece(row, col) {
         for (let i = 0; i < this.pieces.length; i++) {
