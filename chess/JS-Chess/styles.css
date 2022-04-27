@@ -1,6 +1,6 @@
 body {
-  display: grid;
-  justify-content: center;
+  background-color: azure;
+  transition: background-color 1000ms linear;
 }
 
 .light-cell {
@@ -8,6 +8,7 @@ body {
   height: 49px;
   background: white;
   border: 1px black solid;
+  user-select: none;
 }
 
 .dark-cell {
@@ -15,6 +16,7 @@ body {
   height: 49px;
   background: gray;
   border: 1px black solid;
+  user-select: none;
 }
 
 .board {
@@ -23,9 +25,15 @@ body {
   border: 32px solid;
   border-color: darkslategray;
   border-radius: 0.2rem;
+  box-shadow: 0 0 10px #000;
 }
 
-.board tr::before {
+table {
+  position: relative;
+  margin: auto;
+}
+
+/* .board tr::before {
   content: attr(data-line);
   position: absolute;
   margin: 1.2rem 0 0rem -1.5rem;
@@ -52,16 +60,44 @@ body {
   margin: 3.6rem 0 0rem -1.8rem;
   font-size: larger;
   color: azure;
-}
-
+} */
 
 td:hover {
   background: lightgreen;
-  cursor: pointer
+  cursor: pointer;
 }
+
 .selected {
   background-color: lightgreen;
 }
+
 .possible-move {
   background-color: lightgreen;
 }
+
+.winner-dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 50px;
+  border-radius: 10px;
+  width: max-content;
+  font-size: larger;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-display: bold;
+}
+.title {
+  font-size: 27px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-display: bold;
+  color: black;
+  text-shadow: -1px -1px 7px rgba(0,0,0,0.66);
+  line-height: 0.9;
+}
+
+
+
+
