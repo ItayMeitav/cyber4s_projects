@@ -105,10 +105,16 @@ function createChessBoard(boardData) {
 
   if (game.winner !== undefined) {
     const winnerPopup = document.createElement('div');
+    const toStartAgain = document.createElement('div');
     const winner = game.winner.charAt(0).toUpperCase() + game.winner.slice(1);
     winnerPopup.textContent = winner + ' player wins!';
+    toStartAgain.textContent = 'Click here to start a new one';
     winnerPopup.classList.add('winner-dialog');
+    toStartAgain.classList.add('start-again');
+    // table.classList.add('disabled');
     table.appendChild(winnerPopup);
+    table.appendChild(toStartAgain);
+    toStartAgain.addEventListener('click', () => initGame());
   }
 }
 

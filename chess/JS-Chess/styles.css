@@ -84,9 +84,19 @@ td:hover {
   padding: 50px;
   border-radius: 10px;
   width: max-content;
-  font-size: larger;
+  font-size: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-display: bold;
+  font-weight: bold;
+  user-select: none;
+}
+.start-again {
+  position: absolute;
+  left: 50%;
+  top: 57%;
+  transform: translate(-50%, -50%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  z-index: 9999;
 }
 .title {
   font-size: 27px;
@@ -94,9 +104,11 @@ td:hover {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-display: bold;
   color: black;
-  text-shadow: -1px -1px 7px rgba(0,0,0,0.66);
   line-height: 0.9;
 }
+/* .disabled {
+  pointer-events: none;
+} */
 
 
 
