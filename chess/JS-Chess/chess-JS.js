@@ -59,6 +59,7 @@ function addImage(cell, player, name) {
   const image = document.createElement('img');
   // image.src = 'images/' + player + '/' + name + '.png';
   image.src = `images/${player}/${name}.png`;
+  image.draggable = false;
   cell.appendChild(image);
 }
 
@@ -100,6 +101,14 @@ function createChessBoard(boardData) {
   for (let piece of boardData.pieces) {
     const cell = table.rows[piece.row].cells[piece.col];
     addImage(cell, piece.player, piece.type);
+  }
+
+  if (game.winner !== undefined) {
+    const winnerPopup = document.createElement('div');
+    const winner = game.winner.charAt(0).toUpperCase() + game.winner.slice(1);
+    winnerPopup.textContent = winner + ' player wins!';
+    winnerPopup.classList.add('winner-dialog');
+    table.appendChild(winnerPopup);
   }
 }
 
