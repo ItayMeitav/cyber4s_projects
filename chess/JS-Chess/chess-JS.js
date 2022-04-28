@@ -70,21 +70,14 @@ function createChessBoard(boardData) {
   }
 
   // Create empty chess board HTML: 
-  const cols = { 1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "F", 7: "G", 8: "H" }
   table = document.createElement('table');
   table.id = CHESS_BOARD_ID;
-  table.className = "board";
   document.body.appendChild(table);
   for (let row = 0; row < BOARD_SIZE; row++) {
-    // let rowElement = table.insertRow();
     let rowElement = document.createElement('tr');
     table.appendChild(rowElement);
-    rowElement.dataset.line = row + 1;
     for (let col = 0; col < BOARD_SIZE; col++) {
-      //   let cell = rowElement.insertCell();
       let cell = document.createElement('td');
-      cell.dataset.column = cols[col + 1];
-      cell.dataset.line = row;
       rowElement.appendChild(cell);
       cell.id = "cell-" + row.toString() + "_" + col.toString();
       if ((row + col) % 2 === 0) {

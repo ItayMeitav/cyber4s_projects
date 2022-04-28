@@ -1,10 +1,19 @@
 body {
+  display: grid;
+  justify-content: center;
   background-color: azure;
   transition: background-color 1000ms linear;
 }
 
+table {
+  border: 32px solid;
+  border-color: darkslategray;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 10px #000;
+}
+
 .light-cell {
-  width: 49px;
+  width: 45px;
   height: 49px;
   background: white;
   border: 1px black solid;
@@ -12,55 +21,12 @@ body {
 }
 
 .dark-cell {
-  width: 49px;
+  width: 45px;
   height: 49px;
   background: gray;
   border: 1px black solid;
   user-select: none;
 }
-
-.board {
-  width: 330px;
-  height: 330px;
-  border: 32px solid;
-  border-color: darkslategray;
-  border-radius: 0.2rem;
-  box-shadow: 0 0 10px #000;
-}
-
-table {
-  position: relative;
-  margin: auto;
-}
-
-/* .board tr::before {
-  content: attr(data-line);
-  position: absolute;
-  margin: 1.2rem 0 0rem -1.5rem;
-  font-size: larger;
-  color: azure;
-}
-.board tr::after {
-  content: attr(data-line);
-  position: absolute;
-  margin: 1.2rem 0 0rem 0.8rem;
-  font-size: larger;
-  color: azure;
-}
-.board tr:first-child > td::before {
-  content: attr(data-column);
-  position: absolute;
-  margin: -1.9rem 0 0rem 1rem;
-  font-size: larger;
-  color: azure;
-}
-.board tr:last-child > td::after {
-  content: attr(data-column);
-  position: absolute;
-  margin: 3.6rem 0 0rem -1.8rem;
-  font-size: larger;
-  color: azure;
-} */
 
 td:hover {
   background: lightgreen;
@@ -89,27 +55,28 @@ td:hover {
   font-weight: bold;
   user-select: none;
 }
+
 .start-again {
   position: absolute;
-  left: 50%;
-  top: 57%;
+  left: 49.75%;
+  top: 58%;
+  font-size: 20px;
+  font-weight: 200;
+  width: max-content;
   transform: translate(-50%, -50%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
   z-index: 9999;
 }
+
 .title {
-  font-size: 27px;
+  font-size: 32px;
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-display: bold;
-  color: black;
+  color: #c5c5c5;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
   line-height: 0.9;
 }
+
 /* .disabled {
   pointer-events: none;
 } */
-
-
-
-

@@ -67,27 +67,40 @@ class Piece {
     }
   
   
-  
     getPawnMoves(boardData) {
       let result = [];
       let direction = 1;
       if (this.player === BLACK_PLAYER) {
         direction = -1;
       }
-  
-      let position = [this.row + direction, this.col];
-      if (boardData.isEmpty(position[0], position[1])) {
-        result.push(position);
+
+      let oneStep = [this.row + direction, this.col];
+      let twoStep = [this.row + direction * 2 ,this.col];
+
+      if (this.row === 1 || this.row === 6) {
+        if (boardData.getPiece(oneStep[0], oneStep[1]) === undefined &&
+          boardData.getPiece(twoStep[0], twoStep[1]) === undefined) {
+            result.push(twoStep);
+          }
+        }
+
+      if (boardData.getPiece(oneStep[0], oneStep[1]) === undefined) {
+        result.push(oneStep);
       }
   
-      position = [this.row + direction, this.col + direction];
-      if (boardData.isPlayer(position[0], position[1], this.getOpponent())) {
-        result.push(position);
+      let EatPiece = [this.row + direction, this.col];
+      if (boardData.isEmpty(EatPiece[0], EatPiece[1])) {
+        result.push(EatPiece);
       }
   
-      position = [this.row + direction, this.col - direction];
-      if (boardData.isPlayer(position[0], position[1], this.getOpponent())) {
-        result.push(position);
+      EatPiece = [this.row + direction, this.col + direction];
+      if (boardData.isPlayer(EatPiece[0], EatPiece[1], this.getOpponent())) {
+        result.push(EatPiece);
+      }
+  
+      EatPiece = [this.row + direction, this.col - direction];
+      if (boardData.isPlayer(EatPiece[0], EatPiece[1], this.getOpponent())) {
+        result.push(EatPiece);
       }
   
       return result;
