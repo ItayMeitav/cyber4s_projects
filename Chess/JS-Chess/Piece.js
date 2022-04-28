@@ -14,6 +14,10 @@ class Piece {
     }
   
     getPossibleMoves(boardData) {
+      if (game.currentPlayer !== this.player) {
+        let filteredMoves = [];
+        return filteredMoves;
+      } else {
       // Get relative moves
       let moves;
       if (this.type === PAWN) {
@@ -45,6 +49,7 @@ class Piece {
       }
       return filteredMoves;
     }
+  }
   
   
   

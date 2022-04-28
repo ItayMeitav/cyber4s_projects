@@ -36,8 +36,8 @@ class BoardData {
 
 
     // Returns piece in row, col, or undefined if not exists.
-    
-    
+
+
     getPiece(row, col) {
         for (const piece of this.pieces) {
             if (piece.row === row && piece.col === col) {
@@ -48,10 +48,10 @@ class BoardData {
 
 
     //מהתחלה'-מהחישוב של המהלכים האפשרים הפונקציה לא תכנס לחיילים של הצבע הנוכחי'
-  //הלולאה רצה על כל הכלים ומהתחלה שוללת את הכלים שלי
-  //ברגע שהתוכנית רואה שיש כלי מסוים במיקום הזה
-  //אז יכנס לתוך התנאי ורק אז ימחק אותו מהמערך
-  //אחרת ימשיך
+    //הלולאה רצה על כל הכלים ומהתחלה שוללת את הכלים שלי
+    //ברגע שהתוכנית רואה שיש כלי מסוים במיקום הזה
+    //אז יכנס לתוך התנאי ורק אז ימחק אותו מהמערך
+    //אחרת ימשיך
 
     removePiece(row, col) {
         for (let i = 0; i < this.pieces.length; i++) {
@@ -72,4 +72,18 @@ class BoardData {
         const piece = this.getPiece(row, col);
         return piece !== undefined && piece.player === player;
     }
+    isCheck() {
+        for (let piece of this.pieces) {
+            let possibleMoves = piece.getPossibleMoves(game.boardData);
+            for (let possibleMove of possibleMoves) {
+                if (this.getPiece(possibleMove[0], possibleMove[1]) !== undefined) {
+                    if (this.getPiece(possibleMove[0], possibleMove[1]).type === KING) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
+

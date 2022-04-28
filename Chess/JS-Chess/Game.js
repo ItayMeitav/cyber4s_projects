@@ -19,13 +19,19 @@ class Game {
                 if (removedPiece !== undefined && removedPiece.type === KING) {
                     this.winner = piece.player;
                 }
+
+                if (game.boardData.isCheck()) {
+                    alert('Check - Pay attention!')
+                }
                 this.currentPlayer = piece.getOpponent();
+
+                const whosTurn = document.getElementById('current-turn')
+                whosTurn.textContent = "Player's turn: " + piece.getOpponent();
                 return true;
             }
         }
         return false;
     }
-
     getCurrentPlayerTurn(piece) {
         if (this.currentPlayer !== piece.player || this.winner !== undefined) {
             return [];

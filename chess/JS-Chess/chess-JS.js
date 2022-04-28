@@ -89,7 +89,6 @@ function createChessBoard(boardData) {
     }
   }
 
-
   // Add pieces images to board
   for (let piece of boardData.pieces) {
     const cell = table.rows[piece.row].cells[piece.col];
