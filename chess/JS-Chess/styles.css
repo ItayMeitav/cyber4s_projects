@@ -55,8 +55,12 @@ td:hover {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: white;
   padding: 50px;
+  display: inline-block;
+  background-color: rgb(209, 255, 255);
+  border-width: 5px;
+  border-style: solid;
+  box-sizing: border-box;
   border-radius: 10px;
   width: max-content;
   font-size: 30px;
